@@ -3,7 +3,7 @@
 像`vue【vue-cli】`、`react【create-react-app】`和`angular【angular-cli】`它们的脚手架都是基于`webpack`开发的，所以学习`webpack`更方便我们了解脚手架
 
 ## webpack安装
-> 全局安装【不推荐全局安装，实际开发中，每个项目对应的`webpack`版本是不同的，推荐】
+> 全局安装【不推荐全局安装，实际开发中，每个项目对应的`webpack`版本是不同的，推荐局部安装】
 ```bash
 npm i webpack webpack-cli -g
 ```
