@@ -1,4 +1,4 @@
-## css-loader
+## 认识css-loader
 由于`webpack`社区很强大，这个`loader`不需要我们去编写，对于`css`在社区有个很强大的`css-loader`，我们只需要使用`npm`安装上即可，同时`loader`只在**开发环境**使用安装时可以加上参数`-D`
 ```bash
 npm install css-loader -D
