@@ -1,0 +1,4 @@
+.title {
+  /* 这个代码是需要浏览器前缀的 */
+  user-select: none;
+}
