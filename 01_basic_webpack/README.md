@@ -2,6 +2,12 @@
 > 在学习之前确保你已经有`node`环境，并且推荐`node`版本在14.xx.xx即可
 像`vue【vue-cli】`、`react【create-react-app】`和`angular【angular-cli】`它们的脚手架都是基于`webpack`开发的，所以学习`webpack`更方便我们了解脚手架
 
+## 为什么需要webpack?
+1. 解决作用域问题【方便可读性和可维护性】
+  - 因为原生项目加载太多脚本会导致网络瓶颈。同时如果你不小心更改了`JavaScript`文件的加载顺序，这个项目可能要崩溃
+2. 解决代码拆分问题【webpack支持模块】
+  - `CommonJS` 没有浏览器支持。没有 `live binding(实时绑定)`。循环引用存在问题。同步执行的模块解析加载器速度很慢。虽然 `CommonJS` 是 `Node.js` 项目的绝佳解决方案，但浏览器不支持模块
+
 ## webpack安装
 > 全局安装【不推荐全局安装，实际开发中，每个项目对应的`webpack`版本是不同的，推荐局部安装】
 ```bash

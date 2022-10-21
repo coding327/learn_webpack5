@@ -2,6 +2,12 @@
 > 在学习之前确保你已经有`node`环境，并且推荐`node`版本在14.xx.xx即可
 像`vue【vue-cli】`、`react【create-react-app】`和`angular【angular-cli】`它们的脚手架都是基于`webpack`开发的，所以学习`webpack`更方便我们了解脚手架
 
+## 为什么需要webpack?
+1. 解决作用域问题【方便可读性和可维护性】
+  - 因为原生项目加载太多脚本会导致网络瓶颈。同时如果你不小心更改了`JavaScript`文件的加载顺序，这个项目可能要崩溃
+2. 解决代码拆分问题【webpack支持模块】
+  - `CommonJS` 没有浏览器支持。没有 `live binding(实时绑定)`。循环引用存在问题。同步执行的模块解析加载器速度很慢。虽然 `CommonJS` 是 `Node.js` 项目的绝佳解决方案，但浏览器不支持模块
+
 ## webpack安装
 > 全局安装【不推荐全局安装，实际开发中，每个项目对应的`webpack`版本是不同的，推荐局部安装】
 ```bash
@@ -147,12 +153,16 @@ module.exports = {
     rules: [ // 注意rules是数组，以后会有多个规则
       {
         test: /\.css$/, // 正则表达式，由于.在正则表达式中有特殊含义，使用反斜杠转义
-        // 1. loader的写法(语法糖，是use: "css-loader"的简写)
+        // 1. loader的写法(语法糖，是use: "css-loader"的简写，use可以写字符串、对象及数组)
         // loader: "css-loader"
 
         // use: "css-loader"
+        // use: {
+        //   loader: "xxx-loader",
+        //   options: xxx
+        // }
 
-        // 2. 完整的写法
+        // 2. 完整的写法【数组】
         // 但是一个loader是搞不定的，use这里一般是放数组
         use: [
           // 对象写法语法格式【一般对象都是作为配置项】
@@ -198,12 +208,16 @@ module.exports = {
     rules: [ // 注意rules是数组，以后会有多个规则
       {
         test: /\.css$/, // 正则表达式，由于.在正则表达式中有特殊含义，使用反斜杠转义
-        // 1. loader的写法(语法糖，是use: "css-loader"的简写)
+        // 1. loader的写法(语法糖，是use: "css-loader"的简写，use可以写字符串、对象及数组)
         // loader: "css-loader"
 
         // use: "css-loader"
+        // use: {
+        //   loader: "xxx-loader",
+        //   options: xxx
+        // }
 
-        // 2. 完整的写法，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
+        // 2. 完整的写法【数组】，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
         // 但是一个loader是搞不定的，use这里一般是放数组
         use: [
           // 对象写法语法格式【一般对象都是作为配置项】
@@ -304,12 +318,16 @@ module.exports = {
     rules: [ // 注意rules是数组，以后会有多个规则
       {
         test: /\.css$/, // 正则表达式，由于.在正则表达式中有特殊含义，使用反斜杠转义
-        // 1. loader的写法(语法糖，是use: "css-loader"的简写)
+        // 1. loader的写法(语法糖，是use: "css-loader"的简写，use可以写字符串、对象及数组)
         // loader: "css-loader"
 
         // use: "css-loader"
+        // use: {
+        //   loader: "xxx-loader",
+        //   options: xxx
+        // }
 
-        // 2. 完整的写法，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
+        // 2. 完整的写法【数组】，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
         // 但是一个loader是搞不定的，use这里一般是放数组
         use: [
           // 对象写法语法格式【一般对象都是作为配置项】
@@ -455,12 +473,16 @@ module.exports = {
     rules: [ // 注意rules是数组，以后会有多个规则
       {
         test: /\.css$/, // 正则表达式，由于.在正则表达式中有特殊含义，使用反斜杠转义
-        // 1. loader的写法(语法糖，是use: "css-loader"的简写)
+        // 1. loader的写法(语法糖，是use: "css-loader"的简写，use可以写字符串、对象及数组)
         // loader: "css-loader"
 
         // use: "css-loader"
+        // use: {
+        //   loader: "xxx-loader",
+        //   options: xxx
+        // }
 
-        // 2. 完整的写法，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
+        // 2. 完整的写法【数组】，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
         // 但是一个loader是搞不定的，use这里一般是放数组
         use: [
           // 对象写法语法格式【一般对象都是作为配置项】
@@ -599,7 +621,7 @@ npm install postcss postcss-loader postcss-preset-env -D
       "css-loader",
       "less-loader"
     ]
-  }, // 合并写法
+  }, // css、less合并写法
 ```
 
 ## webpack资源篇
@@ -827,13 +849,53 @@ module.exports = {
 
 这里我从阿里图标库中下载了几个字体图标，在`src`文件夹下创建一个`font`文件夹，把字体图标文件放里面
 
+回到`element.js`文件中，来创建一个`i`标签，通过类名方式来使用这个字体图标
+```js
+// i元素，字体图标
+const iEl = document.createElement('i')
+iEl.className = "iconfont icon-dianshijiB"
 
+document.body.appendChild(iEl)
+```
 
+注意把字体图标的css样式文件放入依赖图里面即`iconfont.css`，而这个文件里依赖的其它字体文件如`ttf`、`woff2`也会加入依赖图，根据这个依赖`webpack`就会去打包这些资源
+`element.js`引入`iconfont.css`
+```js
+// 引入字体文件
+import "../font/iconfont.css"
+```
 
+这个时候我们尝试打包，是可以打包成功的，但是之前这个`woff2`其实是无法进行模块解析的，也会让我们使用一个`loader`，当然它这里应该是内置了，这个`loader`，我们可以学习一下，`webpack4`可能会使用
 
+## webpack5之前关于字体打包
+回到`webpack.config.js`文件中配置`rules`
+```js
+      {
+        test: /\.(eot|ttf|woff2?)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "font/[name]_[hash:6].[ext]" // 注意这里是name，如果写成filename它不会去读文件夹【输出这个文件夹】
+          }
+        }
+      }, // 字体资源【webpack5开始内置这个资源模块】
+```
 
+以上打包就能成功，当然这是`webpack5`之前的方案
 
-
+## webpack5开始关于字体打包
+`webpack5`已经内置，其实就是一种`asset module type`
+重新配置一下字体文件的规则
+```js
+{
+  test: /\.(eot|ttf|woff2?)$/,
+  type: 'asset/resource',
+  generator: {
+    filename: 'font/[name]_[hash:6][ext]', // 注意内置模块得filename里得[ext]包含.
+  }
+}, // 字体资源【webpack5开始内置这个资源模块】
+```
+下方其实一直会有个警告，关于`limit`即做`base64`编码，这个**一般**字体文件是不需要做编码的，当然具体得看公司
 
 
 

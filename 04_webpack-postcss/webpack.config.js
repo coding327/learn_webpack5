@@ -12,12 +12,16 @@ module.exports = {
     rules: [ // 注意rules是数组，以后会有多个规则
       {
         test: /\.css$/, // 正则表达式，由于.在正则表达式中有特殊含义，使用反斜杠转义
-        // 1. loader的写法(语法糖，是use: "css-loader"的简写)
+        // 1. loader的写法(语法糖，是use: "css-loader"的简写，use可以写字符串、对象及数组)
         // loader: "css-loader"
 
         // use: "css-loader"
+        // use: {
+        //   loader: "xxx-loader",
+        //   options: xxx
+        // }
 
-        // 2. 完整的写法，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
+        // 2. 完整的写法【数组】，注意这里数组它是从后往前执行loader，而对于css应该先使用加载loader再使用插入loader，这里的执行顺序一定要注意
         // 但是一个loader是搞不定的，use这里一般是放数组
         use: [
           // 对象写法语法格式【一般对象都是作为配置项】
@@ -58,7 +62,7 @@ module.exports = {
       //     "css-loader",
       //     "less-loader"
       //   ]
-      // }, // 合并写法
+      // }, // css、less合并写法
     ]
   }
 }
