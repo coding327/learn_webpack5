@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3704145 */
+  /* Color fonts */
+  src: 
+       url('iconfont.woff2?t=1666318649046') format('woff2'),
+       url('iconfont.ttf?t=1666318649046') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 30px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dianshijiB:before {
+  content: "\ecb0";
+}
+

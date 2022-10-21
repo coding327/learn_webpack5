@@ -1,0 +1,9 @@
+.title {
+  /* color: red; */
+  /* css新特性支持8位，最后两位是透明度 */
+  color: #12345678;
+  font-weight: 700;
+  font-size: 30px;
+  /* 这个代码是需要浏览器前缀的 */
+  user-select: none;
+}
