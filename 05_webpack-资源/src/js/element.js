@@ -6,6 +6,8 @@ import "../css/title.less"
 import "../css/image.css"
 // 导入图片模块
 import img2 from '../img/img2.png'
+// 引入字体文件
+import "../font/iconfont.css"
 
 const divEl = document.createElement('div')
 divEl.className = "title"
@@ -20,6 +22,12 @@ const imgEl = document.createElement('img')
 // imgEl.src = "../img/img2.png" // 错误使用方法
 imgEl.src = img2
 
+// i元素，字体图标
+const iEl = document.createElement('i')
+iEl.className = "iconfont icon-dianshijiB"
+
+
 document.body.appendChild(divEl)
 document.body.appendChild(bgDivEl)
 document.body.appendChild(imgEl)
+document.body.appendChild(iEl)
