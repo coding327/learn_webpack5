@@ -1,0 +1,5 @@
+.image-bg {
+  background: url('../img/img1.jpg') no-repeat center center/contain;
+  width: 200px;
+  height: 200px;
+}
