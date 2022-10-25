@@ -16,7 +16,7 @@ import { sum } from "./js/math"
 // 从vue中引入createApp
 import { createApp } from "vue"
 
-const {priceFormat} = require('./js/format')
+const { priceFormat } = require('./js/format')
 
 // 使用import引入文件，和main.js产生依赖关系
 import "./js/element"
@@ -34,7 +34,7 @@ const app = createApp({
     }
   }
 })
-// 由于模板中已经有咱们的挂载容器了，直接放选择器在里面
+// 由于index.html中已经有咱们的挂载容器了，直接放选择器在里面
 app.mount("#app")
 ```
 我们写的这一系列`vue`代码是写在**`js`文件**【先不说`vue`文件】中的，它本质也是`js`代码，所以应该是可以打包的
@@ -135,7 +135,7 @@ const app = createApp({
     }
   }
 })
-// 由于模板中已经有咱们的挂载容器了，直接放选择器在里面
+// 由于index.html中已经有咱们的挂载容器了，直接放选择器在里面
 app.mount("#app")
 ```
 
@@ -186,7 +186,7 @@ app.mount("#app")
 </style>
 ```
 
-3. `main.js`重新配置，因为此时配置项【根组件】写法发生变化了
+3. `main.js`导入根组件并作为配置项传入`createApp`中；
 ```js
 // 在webpack中文件后缀可以省略，它会自动帮我们加上去
 import { sum } from "./js/math"
@@ -200,7 +200,7 @@ import App from "./vue/App.vue"
 ...
 
 const app = createApp(App)
-// 由于模板中已经有咱们的挂载容器了，直接放选择器在里面
+// 由于index.html中已经有咱们的挂载容器了，直接放选择器在里面
 app.mount("#app")
 ```
 
@@ -317,7 +317,7 @@ import HelloWorld from "./vue/HelloWorld.vue"
 const app = createApp(App)
 // 注册全局组件
 app.component("HelloWorld", HelloWorld)
-// 由于模板中已经有咱们的挂载容器了，直接放选择器在里面
+// 由于index.html中已经有咱们的挂载容器了，直接放选择器在里面
 app.mount("#app")
 ```
 
