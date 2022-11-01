@@ -314,7 +314,7 @@ module.exports = {
 
 ## Proxy代理配置项
 `proxy`是我们开发中非常常用的一个配置选项，它的目的设置代理来解决跨域访问的问题:
-  - 比如我们的一个`api`请求是`http://localhost:8888`，但是本地启动服务器的域名是`http://localhost:8000`，这个时候发送网络请求就会出现跨域的问题;
+  - 比如我们的一个`api`请求是`http://localhost:8888`，但是本地启动服务器的域名是`http://localhost:7777`，这个时候发送网络请求就会出现跨域的问题;
   - 那么我们可以将请求先发送到一个代理服务器，代理服务器和`API`服务器没有跨域的问题，就可以解决我们的跨域问题了;
 
 跨域：在我们当前页面发送请求`axios`，比如`http://localhost:7777`向`http://localhost:8000`发送请求端口号不一样，肯定会出现跨域，不会响应数据，报错跨域
@@ -367,7 +367,7 @@ module.exports = {
     open: true, // 默认打开浏览器，也可以设置为类似于`Google Chrome`等值
     // compress: true, // 默认值是false，gzip压缩，能够提高传输速度【一般不用配置，因为我们本地访问，还要压缩成本】
     proxy: {
-      "/api": "http://localhost:8888", // "/api"是个映射，如果现在请求的是/api，到时候可以代理到配置的这个地址，这也是为什么我们在发请求时里面请求地址是/api/comments，但是这个字符串写法会有问题
+      "/api": "http://localhost:8888", // "/api"是个映射，如果现在请求的是/api，到时候可以代理到配置的这个地址，这也是为什么我们在发请求时里面请求地址是/api/comments，值是API服务器地址【但是这个字符串写法会有问题】
     } // 配置代理
   }, // 注意这个是没有先后顺序，个人习惯写在这里
   ...
@@ -389,7 +389,7 @@ module.exports = {
 ```js
 proxy: {
   "/api": {
-    target: "http://localhost:8888",
+    target: "http://localhost:8888", // API服务器地址
     pathRewrite: {
       "^/api": "" // 这个主要是去掉映射时拼接的地址中间多个/api
     },

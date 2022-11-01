@@ -35,9 +35,9 @@ module.exports = {
     open: true, // 默认打开浏览器，也可以设置为类似于`Google Chrome`等值
     // compress: true, // 默认值是false，gzip压缩，能够提高传输速度【一般不用配置，因为我们本地访问，还要压缩成本】
     proxy: {
-      // "/api": "http://localhost:8888", // "/api"是个映射，如果现在请求的是/api，到时候可以代理到配置的这个地址，这也是为什么我们在发请求时里面请求地址是/api/comments，但是这个字符串写法会有问题【不这样写】
+      // "/api": "http://localhost:8888", // "/api"是个映射，如果现在请求的是/api，到时候可以代理到配置的这个地址，这也是为什么我们在发请求时里面请求地址是/api/comments，值是API服务器地址【但是这个字符串写法会有问题】
       "/api": {
-        target: "http://localhost:8888",
+        target: "http://localhost:8888", // API服务器地址
         pathRewrite: {
           "^/api": "" // 这个主要是去掉映射时拼接的地址中间多个/api
         },
