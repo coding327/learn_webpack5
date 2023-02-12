@@ -42,7 +42,7 @@ module.exports = {
           "^/api": "" // 这个主要是去掉映射时拼接的地址中间多个/api
         },
         secure: false, // 默认情况下不接收转发到https的服务器上，如果希望支持，可以设置为false
-        changeOrigin: true, // 它表示是否更新代理后请求的headers中host地址
+        changeOrigin: true, // 它表示是否更新代理后请求的headers中host地址为target【在vue-cli3中默认为true，vue-cli2默认为false，Request Headers中查看host，浏览器他不会直观给你看，始终都是本地服务的host，但其实设置生效了，在后端request.getHeader("Host")可以获取到】
       }
     } // 配置代理
   }, // 注意这个是没有先后顺序，个人习惯写在这里
